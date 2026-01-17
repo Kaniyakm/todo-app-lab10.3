@@ -1,35 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// -------------------------------------------------------------
+// STEP 8 — MAIN APP LAYOUT
+// -------------------------------------------------------------
 
-function App() {
-  const [count, setCount] = useState(0)
+import { AppProviders } from "./contexts/AppProviders";
+import { TodoInput } from "./components/TodoInput";
+import { TodoList } from "./components/TodoList";
+import { FilterButtons } from "./components/FilterButtons";
+import { ThemeToggleButton } from "./components/ThemeToggleButton";
 
+export default function App() {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <AppProviders>
+      <div className="app-container">
+        <ThemeToggleButton />
+        <h1>Todo App</h1>
+        <TodoInput />
+        <FilterButtons />
+        <TodoList />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </AppProviders>
+  );
 }
-
-export default App
